@@ -1,22 +1,58 @@
-.Details{
-    width: 50%;
+.Main {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f2f6; /* Світлий сірий */
+    background-image: linear-gradient(315deg, #f1f2f6 0%, #d9d6d6 74%); /* Глянцевий градієнт */
+    height: 95vh;
+}
+
+.Details {
+    width: 40%;
+    box-shadow: 0 0 20px rgba(222, 172, 172, 0.3);
+    border-radius: 100px;
+    height: 70vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+    background-color: #f1f2f6; /* Світлий сірий */
+    background-image: linear-gradient(315deg, rgba(241, 242, 246, 0.37) 0%, rgba(201, 198, 198, 0.55) 74%); /* Глянцевий градієнт */
 }
 
-.poster{
-    width: 40%;
+.poster_block {
+    position: relative;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    height: 70%;
+}
+
+.poster {
+    width: 75%;
     margin: 4px;
+    border-radius: 6px;
 }
 
-.info{
+.info {
     width: 40%;
-    margin: 4px;
+    margin-right: 20px;
 }
 
-.h3:hover{
+.h3:hover {
     cursor: pointer;
-    color: pink;
+    color: #441f1f; /* Темно-сірий */
+}
+
+.badge_block {
+    position: absolute;
+    right: -18px;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: #565555; /* Темно-сірий */
+    height: 150px;
 }
