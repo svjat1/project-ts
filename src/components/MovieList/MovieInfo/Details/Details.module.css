@@ -1,0 +1,22 @@
+.Details{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.poster{
+    width: 40%;
+    margin: 4px;
+}
+
+.info{
+    width: 40%;
+    margin: 4px;
+}
+
+.h3:hover{
+    cursor: pointer;
+    color: pink;
+}

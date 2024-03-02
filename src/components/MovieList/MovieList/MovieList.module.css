@@ -1,0 +1,22 @@
+.MainBlock {
+    background: darkorange;
+}
+
+.MovieList{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.button{
+    width: 60%;
+    height: 13%;
+    background: darkslategray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}

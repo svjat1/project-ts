@@ -1,0 +1,16 @@
+.Movie{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px 4px 40px ;
+    background: antiquewhite;
+}
+.Movie:hover{
+    cursor: pointer;
+    background: rgb(112, 87, 87);
+}
+.img{
+    width: 97%;
+    height: 97%;
+}
