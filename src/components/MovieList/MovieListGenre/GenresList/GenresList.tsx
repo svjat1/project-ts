@@ -3,11 +3,11 @@ import React, {useEffect, useState} from "react";
 
 
 
-import css from './Genre.module.css'
+import css from '../GenreList/GenreList.module.css'
 import {movieService} from "../../../../services";
 import {IMovie} from "../../../../INterfaces";
 import {usePageQuery} from "../../../../hooks";
-import {GenreList} from "../GenreList/GenreList";
+import {GenreList} from "../GenreList";
 
 
 const GenresList = () => {

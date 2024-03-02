@@ -1,7 +1,6 @@
 import {FC, PropsWithChildren, useState} from "react";
 
-import style1 from './Movie.module.css'
-import style2 from './img.module.css'
+import css from './Movie.module.css'
 import {useNavigate} from "react-router-dom";
 import {IMovie} from "../../../INterfaces";
 interface IProps extends PropsWithChildren{
@@ -17,8 +16,8 @@ const Movie: FC<IProps> = ({movie}) => {
     }
 
     return (
-        <div className={style1.Movie} onClick={toDetails}>
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} className={style2.img}/>
+        <div className={css.Movie} onClick={toDetails}>
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} className={css.img}/>
         </div>
     );
 }

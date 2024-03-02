@@ -1,7 +1,9 @@
+import {GenresList} from "../../components/MovieList";
+
 const GenresPage = () => {
     return (
         <div>
-            GenresPage
+            <GenresList/>
         </div>
     );
 };

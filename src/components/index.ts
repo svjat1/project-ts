@@ -1,6 +1,4 @@
 export * from './Header'
 export * from './MovieList/MovieList'
 export * from './MovieList/MovieInfo/MovieInfo'
-export * from './UserInfo'
-export * from './MovieList/MovieListCard'
 export * from './MovieList/MovieListCard'
