@@ -1,23 +1,27 @@
+body{
+    font-family: 'Lato', sans-serif;
+
+}
 .Main {
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f1f2f6; /* Світлий сірий */
-    background-image: linear-gradient(315deg, #f1f2f6 0%, #d9d6d6 74%); /* Глянцевий градієнт */
+    background-image: linear-gradient(315deg, #f1f2f6 0%, #d9d6d6 74%);
     height: 95vh;
 }
 
 .Details {
     width: 40%;
-    box-shadow: 0 0 20px rgba(222, 172, 172, 0.3);
+    box-shadow: 0 0 20px rgba(222, 172, 172, 0.29);
     border-radius: 100px;
     height: 70vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    background-color: #f1f2f6; /* Світлий сірий */
+    background-color: #f1f2f6;
     background-image: linear-gradient(315deg, rgba(241, 242, 246, 0.37) 0%, rgba(201, 198, 198, 0.55) 74%); /* Глянцевий градієнт */
 }
 
@@ -36,13 +40,17 @@
 }
 
 .info {
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(222, 172, 172, 0.29);
     width: 40%;
     margin-right: 20px;
 }
 
 .h3:hover {
     cursor: pointer;
-    color: #441f1f; /* Темно-сірий */
+    color: #441f1f;
 }
 
 .badge_block {
@@ -53,6 +61,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background: #565555; /* Темно-сірий */
+    background: #565555;
     height: 150px;
 }

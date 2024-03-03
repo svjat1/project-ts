@@ -7,7 +7,7 @@ interface IProps extends PropsWithChildren{
     movie: IMovie
 }
 const Movie: FC<IProps> = ({movie}) => {
-    const {original_title, title, id, overview, poster_path} =movie
+    const {title, id,poster_path} = movie
     const navigate = useNavigate()
 
     const toDetails =()=> {

@@ -1,16 +1,22 @@
 .Movie{
-    width: 20%;
+
+    width: 22%;
+    height: 43vh;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 4px 4px 40px ;
-    background: antiquewhite;
+    margin: 20px 4px 40px ;
+    background: rgba(192, 191, 191, 0.19);
 }
 .Movie:hover{
     cursor: pointer;
-    background: rgb(112, 87, 87);
 }
 .img{
-    width: 97%;
-    height: 97%;
+    margin-top: 6px;
+    width: 85%;
+    height: 85%;
+    border-radius: 10px;
+}
+.img:hover{
+    border: 1px solid bisque;
 }

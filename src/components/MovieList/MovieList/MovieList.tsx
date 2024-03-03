@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 
 import {movieService} from "../../../services";
-
 import css from './MovieList.module.css'
 import {usePageQuery} from "../../../hooks";
 import {IMovie} from "../../../INterfaces";
