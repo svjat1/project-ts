@@ -6,7 +6,7 @@ import {usePageQuery} from "../../../hooks";
 import {IMovie} from "../../../INterfaces";
 import {Movie} from "../MovieListCard";
 import {Button} from "reactstrap";
-
+import { Rating } from '@mui/material'
 
 const MovieList = () => {
     const { page, prevPage, nextPage } = usePageQuery();
