@@ -1,24 +1,23 @@
 body{
     font-family: 'Lato', sans-serif;
-
+    margin: 0;
 }
 .Main {
     margin: 0;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
-    background-color: #f1f2f6; /* Світлий сірий */
-    background-image: linear-gradient(315deg, #f1f2f6 0%, #d9d6d6 74%);
-    height: 95vh;
+    background: #d9d6d6;
+    height: 81.5vh;
 }
 
 .Details {
-    width: 40%;
+    width: 50%;
     box-shadow: 0 0 20px rgba(222, 172, 172, 0.29);
     border-radius: 100px;
     height: 70vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 0 auto;
     background-color: #f1f2f6;
@@ -27,14 +26,14 @@ body{
 
 .poster_block {
     position: relative;
-    width: 50%;
+    width: 35%;
     display: flex;
     justify-content: center;
     height: 70%;
 }
 
 .poster {
-    width: 75%;
+    width: 95%;
     margin: 4px;
     border-radius: 6px;
 }
@@ -46,21 +45,49 @@ body{
     text-shadow: 2px 2px 4px rgba(222, 172, 172, 0.29);
     width: 40%;
     margin-right: 20px;
+
+    max-height: 500px; /* Максимальна висота блоку */
+    overflow: auto; /* Прокрутка, якщо зміст виходить за межі */
+    padding: 10px; /* Відступи всередині блоку */
 }
+.info::-webkit-scrollbar {
+    width: 10px;
+    height: 30px;
+}
+.info::-webkit-scrollbar-button {
+    background: #666;
+    border-radius: 5px;
+}
+.info::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+    height: 20px;
+}
+.info::-webkit-scrollbar-track-piece:end {
+    background: #c5baba;
+}
+.info::-webkit-scrollbar-track-piece:start {
+    background: #d7d1d1;
+}
+
 
 .h3:hover {
     cursor: pointer;
     color: #441f1f;
 }
+.h3{
+    margin: 5px;
+}
 
 .badge_block {
     position: absolute;
-    right: -18px;
+    right: -68px;
     top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     background: #565555;
-    height: 150px;
+    padding: 10px;
+    height: auto;
 }

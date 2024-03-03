@@ -6,7 +6,6 @@ import {IMovie} from "../../../../INterfaces";
 
 interface IProps extends PropsWithChildren {
     genre: IMovie
-
 }
 const GenreList: FC<IProps> = ({genre}) => {
 

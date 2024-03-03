@@ -1,46 +1,42 @@
 .MainBlock {
-    background-color: #f1f2f6; /* Світлий сірий */
-    background-image: linear-gradient(315deg, #f1f2f6 0%, #d9d6d6 74%);
+    height: 100%;
+    background: #d9d6d6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .MovieList{
     width: 60%;
-    height: 100%;
+    height: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0 auto;
+    margin-bottom: 10px;
     border-radius: 30px;
     box-shadow: 0 0 20px rgba(222, 172, 172, 0.29);
     background-color: #f1f2f6;
-    background-image: linear-gradient(315deg, rgba(241, 242, 246, 0.37) 0%, rgba(201, 198, 198, 0.55) 74%); /* Глянцевий градієнт */
+    background-image: linear-gradient(315deg, rgba(241, 242, 246, 0.37) 0%, rgba(201, 198, 198, 0.55) 74%);
 }
 
 .button {
     width: 40%;
-    margin: 0 auto;
+    margin: 15px;
     padding: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.5); /* Прозорість */
-    backdrop-filter: blur(5px); /* Розмиття */
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
 }
 
-.button button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
+.button:hover {
+    background-color: #8d8d8f;
 }
 
-.button button:hover {
-    background-color: #0056b3;
-}
-
-.button button:disabled {
+.button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
@@ -48,4 +44,24 @@
 .button span {
     margin: 0 10px;
     font-size: 16px;
+}
+.but{
+    background-image: linear-gradient(to right, #757F9A 0%, #D7DDE8  51%, #757F9A  100%);
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    box-shadow: 0 0 20px rgba(238, 192, 192, 0.38);
+    border-radius: 10px;
+    display: block;
+}
+
+.but:hover {
+    background-position: right center;
+    color: #2d2b2b;
+    text-decoration: none;
+}
+body{
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
 }

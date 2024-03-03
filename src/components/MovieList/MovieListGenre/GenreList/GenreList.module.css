@@ -1,26 +1,39 @@
 .Genres{
-    background: darkorange;
+    height: 100%;
+    background: #d9d6d6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .Genre{
     width: 60%;
-    height: 100%;
+    height: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0 auto;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(222, 172, 172, 0.29);
+    background-color: #f1f2f6;
+    background-image: linear-gradient(315deg, rgba(241, 242, 246, 0.37) 0%, rgba(201, 198, 198, 0.55) 74%);
 }
 
 .genre{
-    width: 20%;
+    width: 22%;
+    height: 40vh;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 4px 4px 40px ;
-    background: antiquewhite;
+    margin: 20px 4px 10px ;
+    background: rgba(192, 191, 191, 0.19);
 }
 .img{
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    background: rgb(112, 87, 87);
+    margin-top: 6px;
+    width: 85%;
+    height: 85%;
+    border-radius: 10px;
+}
+.img:hover{
+    border: 1px solid bisque;
 }

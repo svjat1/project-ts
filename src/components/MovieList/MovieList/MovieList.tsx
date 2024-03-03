@@ -5,6 +5,7 @@ import css from './MovieList.module.css'
 import {usePageQuery} from "../../../hooks";
 import {IMovie} from "../../../INterfaces";
 import {Movie} from "../MovieListCard";
+import {Button} from "reactstrap";
 
 
 const MovieList = () => {
@@ -21,9 +22,9 @@ const MovieList = () => {
                 {movies.map(movie => <Movie key={movie.id} movie={movie}/>)}
             </div>
             <div className={css.button}>
-                <button disabled={page <= 1} onClick={prevPage} >← previous </button>
-                <span>Сторінка {page}</span>
-                <button disabled={page >= 500} onClick={nextPage} >Next →</button>
+                <Button disabled={page <= 1} onClick={prevPage} className={css.but}>← Prev</Button>
+                <span>Page {page}</span>
+                <Button disabled={page >= 500} onClick={nextPage} className={css.but} >Next →</Button>
             </div>
         </div>
     );

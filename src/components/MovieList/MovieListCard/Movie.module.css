@@ -1,11 +1,10 @@
 .Movie{
-
     width: 22%;
-    height: 43vh;
+    height: 40vh;
     border-radius: 15px;
     display: flex;
     justify-content: center;
-    margin: 20px 4px 40px ;
+    margin: 20px 4px 10px ;
     background: rgba(192, 191, 191, 0.19);
 }
 .Movie:hover{
