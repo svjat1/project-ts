@@ -1,22 +1,29 @@
 import React, {useState, useEffect, PropsWithChildren} from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 import css from './Header.module.css';
 import {movieService} from "../../services";
 import {GenreShow} from "./GenreShow";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {movieActions} from "../../store";
 
 
 interface IGenre {
     id: number;
     name: string;
 }
-interface HeaderProps extends PropsWithChildren{
+
+interface HeaderProps extends PropsWithChildren {
 }
+
 const Header: React.FC<HeaderProps> = () => {
 
     const [searchValue, setSearchValue] = useState('');
     const [genres, setGenres] = useState<IGenre[]>([]);
     const [showGenres, setShowGenres] = useState(false);
+
+    const dispatch = useAppDispatch()
+  const {trigger} = useAppSelector(state => state.movie)
 
     const navigate = useNavigate();
 
@@ -32,9 +39,9 @@ const Header: React.FC<HeaderProps> = () => {
     return (
         <div className={css.Main}>
             <div className={css.Header}>
-            <button onClick={()=> navigate('movie')} className={css.home}>Home</button>
+                <button onClick={() => navigate('movie')} className={css.home}>Home</button>
                 <div className={css.Search}>
-                    <form >
+                    <form>
                         <input
                             type="text"
                             placeholder="Serch"
@@ -45,7 +52,7 @@ const Header: React.FC<HeaderProps> = () => {
                 </div>
                 <button onClick={handleGenresClick} className={css.GenreButton}>Жанри</button>
                 <div className={css.Theme}>
-                    <button >Тема</button>
+                    <button onClick={()=> dispatch(movieActions.setMode(trigger))}>{!trigger ? 'dark' : 'light'}</button>
                 </div>
             </div>
             <div className={css.GenreList}>
@@ -55,6 +62,6 @@ const Header: React.FC<HeaderProps> = () => {
     );
 }
 
-    export {
-        Header
-    }
+export {
+    Header
+}

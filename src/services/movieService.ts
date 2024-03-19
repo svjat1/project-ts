@@ -1,6 +1,6 @@
 import {apiService} from "./apiService";
 import {IGenre, IMoviesResponse, IMovieWithGenres} from "../INterfaces";
-import {IRes} from "../types/resType";
+import {IRes} from "../types";
 import {urls} from "../constants";
 
 
