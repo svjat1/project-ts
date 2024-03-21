@@ -1,22 +1,20 @@
 import {useEffect} from "react";
 
-import {movieService} from "../../../services";
+
 import css from './MovieList.module.css'
 import {useAppDispatch, useAppSelector, usePageQuery} from "../../../hooks";
-import {IMovie} from "../../../INterfaces";
+
 import {Movie} from "../MovieListCard";
 import {Button} from "reactstrap";
-import { Rating } from '@mui/material'
 import {movieActions} from "../../../store";
 
 const MovieList = () => {
     const { page, prevPage, nextPage } = usePageQuery();
 
-    const {results, trigger} = useAppSelector(state => state.movie) // тут додав
-    const dispatch = useAppDispatch(); // тут додав
+    const {results, trigger} = useAppSelector(state => state.movie);
+    const dispatch = useAppDispatch();
 
     useEffect(()=>{
-        // movieService.getAll(page).then(({data})=> setMovie(data.results))
         dispatch(movieActions.getAll(page))
     }, [page])
 

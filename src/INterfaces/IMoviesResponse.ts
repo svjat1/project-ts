@@ -1,6 +1,6 @@
 import {IMovie} from "./IMovie";
 
 
-export interface IMoviesResponse {
+export interface IMoviesResponse{
     results: IMovie[];
 }

@@ -2,32 +2,31 @@ import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import css from './Header.module.css';
-import {movieService} from "../../services";
 import {GenreShow} from "./GenreShow";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {movieActions} from "../../store";
-import {IGenre} from "../../INterfaces";
+
 
 
 const Header = () => {
 
-    const [searchValue, setSearchValue] = useState('');
-    const [genres, setGenres] = useState<IGenre[]>([]);
+    const [searchValue, setSearchValue] = useState(''); //це для форми
+
     const [showGenres, setShowGenres] = useState(false);
 
     const dispatch = useAppDispatch()
-    const {trigger} = useAppSelector(state => state.movie)
+    const {genre,trigger} = useAppSelector(state => state.movie)
 
-    const navigate = useNavigate();
 
     useEffect(() => {
-        // Завантажити список жанрів з API
-        movieService.getGenre().then(({data}) => setGenres(data.genres))
+            dispatch(movieActions.getGenre())
     }, []);
-    const handleGenresClick = () => {
+
+    const handleGenresClick: () => void = () => {
         setShowGenres((prevShow) => !prevShow);
     };
 
+    const navigate = useNavigate();
 
     return (
         <div className={css.Main}>
@@ -45,7 +44,7 @@ const Header = () => {
                 </div>
             </div>
             <div className={css.GenreList}>
-                {<GenreShow showGenres={showGenres} genres={genres}/>}
+                {<GenreShow showGenres={showGenres} genres={genre}/>}
             </div>
         </div>
     );

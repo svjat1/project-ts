@@ -3,7 +3,7 @@ import {FC, PropsWithChildren} from "react";
 import css from './Details.module.css'
 import {useNavigate} from "react-router-dom";
 import {IGenre, IMovieWithGenres} from "../../../../INterfaces";
-import {Button, Badge, Collapse, Alert} from "reactstrap";
+import {Button, Badge} from "reactstrap";
 
 interface IProps extends PropsWithChildren {
     details: IMovieWithGenres
