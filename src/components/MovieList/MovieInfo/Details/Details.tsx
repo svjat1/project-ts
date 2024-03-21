@@ -9,7 +9,8 @@ interface IProps extends PropsWithChildren {
     details: IMovieWithGenres
 }
 
-const Details: FC<IProps> = ({details}) => {
+const
+    Details: FC<IProps> = ({details}) => {
     const navigate = useNavigate()
     const toGenres = (genre: IGenre) => {
         navigate(`/genres/${genre.id}`)

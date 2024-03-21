@@ -1,4 +1,4 @@
-import React, {useState, useEffect, PropsWithChildren} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import css from './Header.module.css';
@@ -6,24 +6,17 @@ import {movieService} from "../../services";
 import {GenreShow} from "./GenreShow";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {movieActions} from "../../store";
+import {IGenre} from "../../INterfaces";
 
 
-interface IGenre {
-    id: number;
-    name: string;
-}
-
-interface HeaderProps extends PropsWithChildren {
-}
-
-const Header: React.FC<HeaderProps> = () => {
+const Header = () => {
 
     const [searchValue, setSearchValue] = useState('');
     const [genres, setGenres] = useState<IGenre[]>([]);
     const [showGenres, setShowGenres] = useState(false);
 
     const dispatch = useAppDispatch()
-  const {trigger} = useAppSelector(state => state.movie)
+    const {trigger} = useAppSelector(state => state.movie)
 
     const navigate = useNavigate();
 
@@ -42,17 +35,13 @@ const Header: React.FC<HeaderProps> = () => {
                 <button onClick={() => navigate('movie')} className={css.home}>Home</button>
                 <div className={css.Search}>
                     <form>
-                        <input
-                            type="text"
-                            placeholder="Serch"
-                            value={searchValue}
-
-                        />
+                        <input type="text" placeholder="Serch" value={searchValue}/>
                     </form>
                 </div>
                 <button onClick={handleGenresClick} className={css.GenreButton}>Жанри</button>
                 <div className={css.Theme}>
-                    <button onClick={()=> dispatch(movieActions.setMode(trigger))}>{!trigger ? 'dark' : 'light'}</button>
+                    <button
+                        onClick={() => dispatch(movieActions.setMode(trigger))}>{!trigger ? 'dark' : 'light'}</button>
                 </div>
             </div>
             <div className={css.GenreList}>

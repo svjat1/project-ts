@@ -1,8 +1,8 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {IMovie, IMoviesResponse, IMovieWithGenres} from "../../INterfaces";
+import {IMoviesResponse, IMovieWithGenres} from "../../INterfaces";
 import {movieService} from "../../services";
 import {AxiosError} from "axios";
-import {IRes} from "../../types";
+
 
 interface IState {
     results: IMoviesResponse,
@@ -48,6 +48,9 @@ const movieSLice = createSlice({
     reducers: {
         setMode: (state, action) => {
             state.trigger = !state.trigger
+        },
+        reset: state => {
+            state.result = null
         }
     },
     extraReducers: builder =>

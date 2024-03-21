@@ -5,9 +5,6 @@ import {IGenre} from "../../INterfaces";
 import css from './Header.module.css'
 
 
-interface IProps extends PropsWithChildren{
-
-}
 interface GenreButtonProps {
     showGenres: boolean;
     genres: IGenre[]

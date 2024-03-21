@@ -12,13 +12,14 @@ const Movie: FC<IProps> = ({movie}) => {
 
     const toDetails =()=> {
         const id = movie.id
-        navigate(`/movie/${id}`)
+       navigate(`/movie/${id}`)
     }
 
     return (
         <div className={css.Movie} onClick={toDetails}>
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} className={css.img}/>
         </div>
+
     );
 }
 
