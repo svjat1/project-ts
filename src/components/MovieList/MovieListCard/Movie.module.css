@@ -3,19 +3,20 @@
     height: 40vh;
     border-radius: 15px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin: 20px 4px 10px ;
     background: rgba(192, 191, 191, 0.19);
 }
-.Movie:hover{
-    cursor: pointer;
-}
+/*.Movie:hover{*/
+/*    cursor: pointer;*/
+/*}*/
 .img{
     margin-top: 6px;
     width: 85%;
     height: 85%;
     border-radius: 10px;
 }
-.img:hover{
-    border: 1px solid bisque;
-}
+/*.img:hover{*/
+/*    border: 1px solid bisque;*/
+/*}*/

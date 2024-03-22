@@ -10,6 +10,7 @@ interface IState {
     result: IMovieWithGenres
     genre: IGenre[]
     byGenre: IMovie[]
+    showGenre: boolean
 }
 
 const initialState: IState = {
@@ -17,7 +18,8 @@ const initialState: IState = {
     trigger: null,
     result: null,
     genre: [],
-    byGenre: []
+    byGenre: [],
+    showGenre: null
 }
 
 const getAll = createAsyncThunk<IMoviesResponse, number>(
@@ -76,11 +78,14 @@ const movieSLice = createSlice({
     name: 'movieSlice',
     initialState,
     reducers: {
-        setMode: (state, action) => {
+        setMode: state => {
             state.trigger = !state.trigger
         },
         reset: state => {
             state.result = null
+        },
+        setGenre: state =>{
+            state.showGenre = !state.showGenre
         }
     },
     extraReducers: builder =>

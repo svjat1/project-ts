@@ -1,10 +1,8 @@
 import {useParams} from "react-router-dom";
-import React, {useEffect, useMemo, useRef, useState} from "react";
+import React, {useEffect} from "react";
 
 import css from '../GenreList/GenreList.module.css'
 import butStyle from '../../MovieList/MovieList.module.css'
-import {movieService} from "../../../../services";
-import {IMovie, IMovieWithGenres} from "../../../../INterfaces";
 import {useAppDispatch, useAppSelector, usePageQuery} from "../../../../hooks";
 import {GenreList} from "../GenreList";
 import {movieActions} from "../../../../store";
@@ -12,7 +10,6 @@ import {movieActions} from "../../../../store";
 
 const GenresList = () => {
     const {page, prevPage, nextPage} = usePageQuery();
-    const [genres, setGenres] = useState<IMovie[]>([])
     const {genreId} = useParams();
     const pages = {page: '1'}
     const ids = +genreId
@@ -21,7 +18,6 @@ const GenresList = () => {
    const dispatch = useAppDispatch()
 
     useEffect(() => {
-        // movieService.getByGenre(+genreId, page).then(({data}) => setGenres(data.results))
         dispatch(movieActions.getByGenre({ids, page}))
     }, [genreId, page])
 
