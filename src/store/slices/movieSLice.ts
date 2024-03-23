@@ -2,6 +2,8 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {IGenre, IMovie, IMoviesResponse, IMovieWithGenres} from "../../INterfaces";
 import {movieService} from "../../services";
 import {AxiosError} from "axios";
+import {IRes} from "../../types";
+import {AsyncThunkConfig} from "@reduxjs/toolkit/dist/createAsyncThunk";
 
 
 interface IState {
@@ -10,7 +12,8 @@ interface IState {
     result: IMovieWithGenres
     genre: IGenre[]
     byGenre: IMovie[]
-    showGenre: boolean
+    showGenre: boolean,
+    query: string,
 }
 
 const initialState: IState = {
@@ -19,7 +22,8 @@ const initialState: IState = {
     result: null,
     genre: [],
     byGenre: [],
-    showGenre: null
+    showGenre: null,
+    query: '',
 }
 
 const getAll = createAsyncThunk<IMoviesResponse, number>(
@@ -74,6 +78,19 @@ const getByGenre = createAsyncThunk<IMovie[], { ids: number, page: number }>(
     }
 )
 
+const searchCollection = createAsyncThunk<IMoviesResponse, string>(
+    'movieSLice/searchCollection',
+    async (query, {rejectWithValue})=>{
+        try {
+            const {data} = await movieService.getByCollection(query)
+            return data
+        }catch (e) {
+            const err = e as AxiosError;
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
+
 const movieSLice = createSlice({
     name: 'movieSlice',
     initialState,
@@ -86,6 +103,12 @@ const movieSLice = createSlice({
         },
         setGenre: state =>{
             state.showGenre = !state.showGenre
+        },
+        setQuery:(state, actions)=>{
+            state.query = actions.payload
+        },
+        clearQuery:(state, actions)=>{
+            state.query = ''
         }
     },
     extraReducers: builder =>
@@ -102,6 +125,9 @@ const movieSLice = createSlice({
             .addCase(getByGenre.fulfilled, (state, action)=>{
                 state.byGenre = action.payload
             })
+            .addCase(searchCollection.fulfilled, (state, action)=>{
+                state.results = action.payload
+            })
 })
 
 const {reducer: movieReducer, actions} = movieSLice
@@ -110,7 +136,8 @@ const movieActions = {
     getAll,
     getById,
     getGenre,
-    getByGenre
+    getByGenre,
+    searchCollection
 }
 
 export {

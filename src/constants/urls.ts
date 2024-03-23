@@ -1,5 +1,6 @@
 const baseURL = 'https://api.themoviedb.org/3'
 
+const search = '/search/movie?query='
 const movies = '/discover/movie'
 const movie = '/movie'
 const genre = '/genre/movie/list'
@@ -12,6 +13,10 @@ const urls = {
     genre:{
         base:genre,
         byId:(genreId:number)=> `${movieWith}${genreId}`
+    },
+    search:{
+        base: search,
+        byCollection:(query:string)=> `${search}${query}&page=1'`
     }
 }
 export {

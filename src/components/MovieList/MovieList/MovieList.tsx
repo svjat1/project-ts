@@ -11,16 +11,21 @@ import {movieActions} from "../../../store";
 const MovieList = () => {
     const { page, prevPage, nextPage } = usePageQuery();
 
-    const {results, trigger} = useAppSelector(state => state.movie);
+    const {results, trigger, query} = useAppSelector(state => state.movie);
     const dispatch = useAppDispatch();
 
     useEffect(()=>{
-        dispatch(movieActions.getAll(page))
-    }, [page])
+        if(query){
+            dispatch(movieActions.searchCollection(query))
+        }else {
+           dispatch(movieActions.getAll(page))
+        }
+    }, [page,query])
 
     return (
         <div className={css.MainBlock}>
             <div className={css.MovieList}>
+                {/*{results.results.map(movie => <Movie key={movie.id} movie={movie}/>)}*/}
                 {results.results.map(movie => <Movie key={movie.id} movie={movie}/>)}
             </div>
             <div className={css.button}>
