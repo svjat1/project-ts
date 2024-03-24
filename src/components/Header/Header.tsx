@@ -1,52 +1,51 @@
-import React, {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {SubmitHandler, useForm} from "react-hook-form";
 
 import css from './Header.module.css';
 import {GenreShow} from "./GenreShow";
-import {useAppDispatch, useAppSelector} from "../../hooks";
+import {useAppDispatch, useAppSelector, usePageQuery} from "../../hooks";
 import {movieActions} from "../../store";
-import {TextField} from "@mui/material";
-import {useForm} from "react-hook-form";
-
+import {IString} from "../../INterfaces";
 
 
 const Header = () => {
-   const {register, reset, handleSubmit, setValue} = useForm()
-    const [searchValue, setSearchValue] = useState<string>(''); //це для форми
+    const {register, reset, handleSubmit, setValue} = useForm<IString>()
+    const { page, prevPage, nextPage } = usePageQuery();
 
     const dispatch = useAppDispatch()
-    const {genre,trigger, showGenre,query} = useAppSelector(state => state.movie)
+    const {results,genre, trigger, showGenre, query} = useAppSelector(state => state.movie)
 
     console.log(query);
     useEffect(() => {
-            dispatch(movieActions.getGenre())
+        dispatch(movieActions.getGenre())
     }, []);
 
     const navigate = useNavigate();
-    const clear =()=> {
-        dispatch(movieActions.setQuery(''))
+
+    const save: SubmitHandler<IString> = async (data) => {
+        await  navigate(`/movie`)
+        const {query} = data
+        dispatch(movieActions.searchCollection({query, page}));
+        dispatch(movieActions.setQuery(query))
         reset()
-    };
+    }
+
 
     return (
         <div className={!trigger ? css.Main : css.MainDark}>
             <div className={css.Header}>
-                <button onClick={() => navigate('movie')} className={css.home}>Home</button>
+                <button onClick={() => {
+                    navigate('movie');
+                    dispatch(movieActions.getAll(1))
+                }} className={css.home}>Home </button>
                 <div className={css.Search}>
-                    <form onSubmit={handleSubmit(clear)}>
-                        <input type="text" placeholder="Serch"
-                              {...register('search')}
-                               onChange={(e) => {
-                                   setValue('search', e.target.value)
-                                   dispatch(movieActions.setQuery(e.target.value))
-                               }}
-                        />
-                        <button type={"submit"} >Show All</button>
-                        {/*<TextField id="outlined-basic" label="Serch" variant="outlined" />*/}
+                    <form onSubmit={handleSubmit(save)}>
+                        <input type={"text"} placeholder={'search'} name={'query'} {...register('query')}/>
+                        <button>Search</button>
                     </form>
-
                 </div>
-                <button onClick={()=> dispatch(movieActions.setGenre())} className={css.GenreButton}>Жанри</button>
+                <button onClick={() => dispatch(movieActions.setGenre())} className={css.GenreButton}>Жанри</button>
                 <div className={css.Theme}>
                     <button
                         onClick={() => dispatch(movieActions.setMode())}>{!trigger ? 'dark' : 'light'}</button>

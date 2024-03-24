@@ -2,5 +2,7 @@ import {IMovie} from "./IMovie";
 
 
 export interface IMoviesResponse{
-    results: IMovie[];
+    page:number,
+    results: IMovie[],
+    total_pages: number
 }

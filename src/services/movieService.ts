@@ -10,7 +10,7 @@ const movieService = {
     getByGenre:(genreId:number, page:number): IRes<IMoviesResponse> =>apiService.get(urls.genre.byId(genreId), {params:{page}}),
     getByGid:(genreId:number): IRes<IMovieWithGenres> =>apiService.get(urls.genre.byId(genreId)),
     getGenre:():IRes<IMovieWithGenres>=> apiService.get(urls.genre.base),
-    getByCollection:(query: string):IRes<IMoviesResponse> => apiService.get(urls.search.byCollection(query))
+    getByCollection:(query: string, page:number):IRes<IMoviesResponse> => apiService.get(urls.search.byCollection(query),{params:{page}}),
 }
 
 export {

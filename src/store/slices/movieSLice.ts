@@ -2,8 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {IGenre, IMovie, IMoviesResponse, IMovieWithGenres} from "../../INterfaces";
 import {movieService} from "../../services";
 import {AxiosError} from "axios";
-import {IRes} from "../../types";
-import {AsyncThunkConfig} from "@reduxjs/toolkit/dist/createAsyncThunk";
+
 
 
 interface IState {
@@ -17,7 +16,7 @@ interface IState {
 }
 
 const initialState: IState = {
-    results: {results: []},
+    results: {page: null, results: [], total_pages:null},
     trigger: null,
     result: null,
     genre: [],
@@ -78,11 +77,11 @@ const getByGenre = createAsyncThunk<IMovie[], { ids: number, page: number }>(
     }
 )
 
-const searchCollection = createAsyncThunk<IMoviesResponse, string>(
+const searchCollection = createAsyncThunk<IMoviesResponse, { query: string; page: number }>(
     'movieSLice/searchCollection',
-    async (query, {rejectWithValue})=>{
+    async ({query, page}, {rejectWithValue})=>{
         try {
-            const {data} = await movieService.getByCollection(query)
+            const {data} = await movieService.getByCollection(query, page)
             return data
         }catch (e) {
             const err = e as AxiosError;
@@ -104,11 +103,8 @@ const movieSLice = createSlice({
         setGenre: state =>{
             state.showGenre = !state.showGenre
         },
-        setQuery:(state, actions)=>{
+        setQuery: (state,actions) =>{
             state.query = actions.payload
-        },
-        clearQuery:(state, actions)=>{
-            state.query = ''
         }
     },
     extraReducers: builder =>
@@ -137,7 +133,7 @@ const movieActions = {
     getById,
     getGenre,
     getByGenre,
-    searchCollection
+    searchCollection,
 }
 
 export {

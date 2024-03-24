@@ -11,7 +11,7 @@ const Movie: FC<IProps> = ({movie}) => {
     const {title, id,poster_path, vote_average} = movie
     const navigate = useNavigate()
 
-    const toDetails =()=> {
+    const toDetails:() => void =()=> {
         const id = movie.id
        navigate(`/movie/${id}`)
     }

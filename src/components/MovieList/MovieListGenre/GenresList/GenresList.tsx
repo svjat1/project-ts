@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import React, {useEffect} from "react";
 
 import css from '../GenreList/GenreList.module.css'
@@ -14,7 +14,7 @@ const GenresList = () => {
     const pages = {page: '1'}
     const ids = +genreId
 
-   const {byGenre} = useAppSelector(state => state.movie)
+   const {byGenre,results} = useAppSelector(state => state.movie)
    const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -28,9 +28,9 @@ const GenresList = () => {
                 {byGenre.map(genre => <GenreList key={genre.id} genre={genre}/>)}
             </div>
             <div className={butStyle.button}>
-                <button disabled={page <= 1} onClick={prevPage} className={butStyle.but}>← Prev</button>
+                <button disabled={results.page <= 1} onClick={prevPage} className={butStyle.but}>← Prev</button>
                 <span>Page {page}</span>
-                <button disabled={page >= 500} onClick={nextPage} className={butStyle.but}>Next →</button>
+                <button disabled={results.page >= 500} onClick={nextPage} className={butStyle.but}>Next →</button>
             </div>
         </div>
 

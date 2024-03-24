@@ -16,7 +16,7 @@ const urls = {
     },
     search:{
         base: search,
-        byCollection:(query:string)=> `${search}${query}&page=1'`
+        byCollection:(query:string)=> `${search}${query}`
     }
 }
 export {
