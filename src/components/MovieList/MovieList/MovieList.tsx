@@ -9,7 +9,7 @@ import {movieActions} from "../../../store";
 const MovieList = () => {
     const { page, prevPage, nextPage } = usePageQuery();
 
-    const {results,query} = useAppSelector(state => state.movie);
+    const {results,query, trigger} = useAppSelector(state => state.movie);
     const dispatch = useAppDispatch();
 
     useEffect(()=>{
@@ -21,8 +21,8 @@ const MovieList = () => {
     }, [page])
 
     return (
-        <div className={css.MainBlock}>
-            <div className={css.MovieList}>
+        <div className={!trigger ? css.MainBlock : css.MainBlockDark}>
+            <div className={!trigger ? css.MovieList: css.MovieListDark}>
                 {results.results.map(movie => <Movie key={movie.id} movie={movie}/>)}
             </div>
             <div className={css.button}>

@@ -12,7 +12,7 @@ interface GenreButtonProps {
 const GenreShow: FC<GenreButtonProps> = ({genres}) => {
 
     const navigate = useNavigate()
-    const {showGenre} =  useAppSelector(state => state.movie)
+    const {showGenre,trigger} =  useAppSelector(state => state.movie)
     const [, setQuery] = useSearchParams({page: "1"});
 
     const toGenres = (genre: IGenre): void  => {
@@ -24,7 +24,7 @@ const GenreShow: FC<GenreButtonProps> = ({genres}) => {
             {showGenre && (
                 <div className={css.GenreItem}>
                     {genres.map((genre) => (
-                        <div key={genre.id} className={css.item} onClick={() => toGenres(genre)}>{genre.name}</div>
+                        <div key={genre.id} className={!trigger ? css.item : css.itemDark} onClick={() => toGenres(genre)}>{genre.name}</div>
                     ))}
                 </div>
             )}

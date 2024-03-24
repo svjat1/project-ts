@@ -11,16 +11,66 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    height: 150px;
-    background: #2c2929;
+    height: 250px;
+    background: #2C3539;
 }
 .Header {
+    margin-top: 10px;
     width: 40%;
     display: flex;
-    justify-content: space-between;
+    border-radius: 40px;
+    justify-content: space-around;
     align-items: center;
     height: 150px;
+    background-color: #d9d9d9;
+    background-image: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 74%);
 }
+.HeaderDark {
+    margin-top: 10px;
+    width: 40%;
+    display: flex;
+    border-radius: 40px;
+    justify-content: space-around;
+    align-items: center;
+    height: 150px;
+    background-color: #a49e9e;
+    background-image: linear-gradient(315deg, #bdbcbc 0%, #c2b3b3 74%);
+}
+
+.input{
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+}
+.input:focus {
+    border-color: #80858d; /* Колір рамки при отриманні фокусу */
+}
+
+
+.butSearch{
+    background-color: #b9afaf;
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.butSearch:hover {
+    background-color: #d7d3d3;
+}
+.form{
+    display: flex;
+}
+
 .GenreList{
     display: flex;
     flex-wrap: wrap;
@@ -41,21 +91,41 @@
     margin: 2px;
     padding: 7px;
     border-radius: 5px;
-    background-image: linear-gradient(to right, #485563 0%, #414e5e 51%, #485563  100%);
+    background-color: rgb(192,192,192);
     text-align: center;
     transition: 0.5s;
     background-size: 200% auto;
-    color: white;
+    color: #050505;
+}
+.itemDark{
+    width: auto;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.11);
+    margin: 2px;
+    padding: 7px;
+    border-radius: 5px;
+    background-color: rgb(122, 117, 117);
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #e3e2e2;
 }
 .item:hover{
-    background-image: linear-gradient(315deg, rgba(79, 77, 77, 0.42) 0%, rgba(70, 60, 60, 0.38) 74%);
+    background-color: rgb(206, 205, 205);
     background-position: right center;
-    color: #fff;
+    color: #070707;
     text-decoration: none;
+    cursor: pointer;
+}
+.itemDark:hover{
+    background-color: rgb(206, 205, 205);
+    background-position: right center;
+    color: #070707;
+    text-decoration: none;
+    cursor: pointer;
 }
 .home{
     width: 100px;
-    background-image: linear-gradient(to right, #757F9A 0%, #D7DDE8  51%, #757F9A  100%);
+    background-image: linear-gradient(to right, #c0c0c0 0%, #D7DDE8  51%, #c0c0c0 100%);
     text-align: center;
     transition: 0.5s;
     background-size: 200% auto;
@@ -71,7 +141,7 @@
 }
 .GenreButton{
     width: 100px;
-    background-image: linear-gradient(to right, #757F9A 0%, #D7DDE8  51%, #757F9A  100%);
+    background-image: linear-gradient(to right, #c0c0c0 0%, #D7DDE8  51%, #c0c0c0 100%);
     text-align: center;
     transition: 0.5s;
     background-size: 200% auto;

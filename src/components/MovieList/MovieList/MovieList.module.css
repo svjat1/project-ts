@@ -6,6 +6,14 @@
     justify-content: center;
     align-items: center;
 }
+.MainBlockDark {
+    height: 100%;
+    background: #2C3539;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .MovieList{
     width: 60%;
@@ -18,6 +26,18 @@
     box-shadow: 0 0 20px rgba(222, 172, 172, 0.29);
     background-color: #f1f2f6;
     background-image: linear-gradient(315deg, rgba(241, 242, 246, 0.37) 0%, rgba(201, 198, 198, 0.55) 74%);
+}
+.MovieListDark{
+    width: 60%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(222, 172, 172, 0.29);
+    background-color: #5b5c60;
+    background-image: linear-gradient(315deg, rgba(211, 213, 220, 0.37) 0%, rgba(168, 165, 165, 0.55) 74%);
 }
 
 .button {
