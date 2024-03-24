@@ -16,8 +16,9 @@ const MovieInfo = () => {
 
     useEffect(() => {
         if (id) {
-           dispatch(movieActions.getById(+id))
-        } return ()=> {
+            dispatch(movieActions.getById(+id))
+        }
+        return () => {
             dispatch(movieActions.reset())
         }
     }, [id])

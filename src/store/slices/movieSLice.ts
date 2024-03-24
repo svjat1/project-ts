@@ -4,7 +4,6 @@ import {movieService} from "../../services";
 import {AxiosError} from "axios";
 
 
-
 interface IState {
     results: IMoviesResponse,
     trigger: boolean
@@ -16,7 +15,7 @@ interface IState {
 }
 
 const initialState: IState = {
-    results: {page: null, results: [], total_pages:null},
+    results: {page: null, results: [], total_pages: null},
     trigger: null,
     result: null,
     genre: [],
@@ -79,11 +78,11 @@ const getByGenre = createAsyncThunk<IMovie[], { ids: number, page: number }>(
 
 const searchCollection = createAsyncThunk<IMoviesResponse, { query: string; page: number }>(
     'movieSLice/searchCollection',
-    async ({query, page}, {rejectWithValue})=>{
+    async ({query, page}, {rejectWithValue}) => {
         try {
             const {data} = await movieService.getByCollection(query, page)
             return data
-        }catch (e) {
+        } catch (e) {
             const err = e as AxiosError;
             return rejectWithValue(err.response.data)
         }
@@ -100,10 +99,10 @@ const movieSLice = createSlice({
         reset: state => {
             state.result = null
         },
-        setGenre: state =>{
+        setGenre: state => {
             state.showGenre = !state.showGenre
         },
-        setQuery: (state,actions) =>{
+        setQuery: (state, actions) => {
             state.query = actions.payload
         }
     },
@@ -118,10 +117,10 @@ const movieSLice = createSlice({
             .addCase(getGenre.fulfilled, (state, action) => {
                 state.genre = action.payload
             })
-            .addCase(getByGenre.fulfilled, (state, action)=>{
+            .addCase(getByGenre.fulfilled, (state, action) => {
                 state.byGenre = action.payload
             })
-            .addCase(searchCollection.fulfilled, (state, action)=>{
+            .addCase(searchCollection.fulfilled, (state, action) => {
                 state.results = action.payload
             })
 })

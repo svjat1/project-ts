@@ -10,6 +10,14 @@ body{
     background: #d9d6d6;
     height: 81.5vh;
 }
+.MainDark {
+    margin: 0;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    background: #2C3539;
+    height: 81.5vh;
+}
 
 .Details {
     width: 50%;
@@ -23,10 +31,22 @@ body{
     background-color: #f1f2f6;
     background-image: linear-gradient(315deg, rgba(241, 242, 246, 0.37) 0%, rgba(201, 198, 198, 0.55) 74%); /* Глянцевий градієнт */
 }
+.DetailsDark {
+    width: 50%;
+    box-shadow: 0 0 20px rgba(222, 172, 172, 0.29);
+    border-radius: 100px;
+    height: 70vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    background-color: #5b5c60;
+    background-image: linear-gradient(315deg, rgba(211, 213, 220, 0.37) 0%, rgba(168, 165, 165, 0.55) 74%);
+}
 
 .poster_block {
     position: relative;
-    width: 35%;
+    width: 31%;
     display: flex;
     justify-content: center;
     height: 70%;

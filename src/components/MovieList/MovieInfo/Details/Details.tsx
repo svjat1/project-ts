@@ -1,9 +1,10 @@
-import {FC, PropsWithChildren, useEffect} from "react";
+import {FC, PropsWithChildren} from "react";
 
 import css from './Details.module.css'
 import {useNavigate} from "react-router-dom";
 import {IGenre, IMovieWithGenres} from "../../../../INterfaces";
-import {Button, Badge} from "reactstrap";
+import {Badge, Button} from "reactstrap";
+import {useAppSelector} from "../../../../hooks";
 
 interface IProps extends PropsWithChildren {
     details: IMovieWithGenres
@@ -12,16 +13,17 @@ interface IProps extends PropsWithChildren {
 const Details: FC<IProps> = ({details}) => {
 
     const navigate = useNavigate()
+    const {trigger} = useAppSelector(state => state.movie)
 
 
     const toGenres = (genre: IGenre) => {
         navigate(`/genres/${genre.id}`)
     }
-    const {id, original_title, title, overview, poster_path, genres} = details
+    const {original_title, title, overview, poster_path, genres} = details
 
     return (
-        <div className={css.Main}>
-            <div className={css.Details}>
+        <div className={!trigger ? css.Main : css.MainDark}>
+            <div className={!trigger ? css.Details : css.DetailsDark}>
                 <div className={css.poster_block}>
                     <img src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`} alt={details.title}
                          className={css.poster}/>
