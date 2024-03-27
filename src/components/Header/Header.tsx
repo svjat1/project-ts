@@ -20,7 +20,6 @@ const Header = () => {
     const dispatch = useAppDispatch()
     const {genre, trigger, query} = useAppSelector(state => state.movie)
 
-    console.log(query);
     useEffect(() => {
         dispatch(movieActions.getGenre())
     }, []);
