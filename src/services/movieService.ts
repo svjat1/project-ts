@@ -1,5 +1,5 @@
 import {apiService} from "./apiService";
-import {IGenre, IMoviesResponse, IMovieWithGenres} from "../INterfaces";
+import {IMoviesResponse, IMovieWithGenres, ITrailerResponse} from "../INterfaces";
 import {IRes} from "../types";
 import {urls} from "../constants";
 
@@ -11,6 +11,7 @@ const movieService = {
     getByGid:(genreId:number): IRes<IMovieWithGenres> =>apiService.get(urls.genre.byId(genreId)),
     getGenre:():IRes<IMovieWithGenres>=> apiService.get(urls.genre.base),
     getByCollection:(query: string, page:number):IRes<IMoviesResponse> => apiService.get(urls.search.byCollection(query),{params:{page}}),
+    getVideo:(id:number):IRes<ITrailerResponse> =>  apiService.get(urls.movie.byVideoId(id))
 }
 
 export {

@@ -23,9 +23,9 @@ const Movie: FC<IProps> = ({movie}) => {
         <div className={css.Movie}>
             {movie.poster_path ? (
                 <img onClick={toDetails} src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}
-                  className={!trigger ? css.img : css.imgDark}/>   ) : (
-            <div>{movie.title}</div>
-                )}
+                     className={!trigger ? css.img : css.imgDark}/>) : (
+                <div>{movie.title}</div>
+            )}
             <div>
                 <Rating name="read-only" defaultValue={movie.vote_average} precision={1}/>
             </div>

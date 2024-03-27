@@ -30,6 +30,7 @@ const MovieList = () => {
                 <span>Page {page}</span>
                 <Button disabled={page >= 500} onClick={nextPage} className={css.but}>Next →</Button>
             </div>
+
         </div>
     );
 };

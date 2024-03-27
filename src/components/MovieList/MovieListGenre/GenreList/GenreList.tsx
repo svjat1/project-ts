@@ -1,7 +1,7 @@
 import {FC, PropsWithChildren,} from "react";
+import {useNavigate} from "react-router-dom";
 
 import css from './GenreList.module.css'
-import {useNavigate} from "react-router-dom";
 import {IMovie} from "../../../../INterfaces";
 import {Rating} from "@mui/material";
 

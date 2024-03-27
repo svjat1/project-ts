@@ -11,17 +11,19 @@ const MovieInfo = () => {
     const {id} = useParams<{ id: string }>()
 
     const dispatch = useAppDispatch();
-    const {result} = useAppSelector(state => state.movie)
+    const {result, key} = useAppSelector(state => state.movie)
 
 
     useEffect(() => {
         if (id) {
             dispatch(movieActions.getById(+id))
+            dispatch(movieActions.getTrailer(+id))
         }
         return () => {
             dispatch(movieActions.reset())
         }
     }, [id])
+
 
     return (
         <div>

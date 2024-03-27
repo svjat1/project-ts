@@ -55,31 +55,38 @@ const Header = () => {
                 <button onClick={() => {
                     navigate('movie');
                     dispatch(movieActions.getAll(1))
-                }} className={css.home}>Home
+                }} className={!trigger ? css.home : css.homeDark}>Home
                 </button>
                 <div className={css.Search}>
                     <form className={css.form} onSubmit={handleSubmit(save)}>
                         <input className={css.input} type={"text"} placeholder={'search'}
                                name={'query'} {...register('query')}/>
-                        <button className={css.butSearch}>Search</button>
+                        <button className={!trigger ? css.butSearch : css.butSearchDark}>Search</button>
                     </form>
                 </div>
-                <button onClick={() => dispatch(movieActions.setGenre())} className={css.GenreButton}>Genres</button>
-                <div className={css.Theme}>
-                    <FormControlLabel
-                        control={
-                            <Switch checked={state.jason} onChange={handleChange} name="jason"
-                                    onClick={() => dispatch(movieActions.setMode())}/>
-                        }
-                        label={!trigger ? 'dark' : 'light'}
-                    />
+                <div className={css.rightBLock}>
+                    <button onClick={() => dispatch(movieActions.setGenre())}
+                            className={!trigger ? css.GenreButton : css.GenreButtonDark}>Genres
+                    </button>
+                    <div className={css.Theme}>
+                        <FormControlLabel
+                            control={
+                                <Switch checked={state.jason} onChange={handleChange} name="jason"
+                                        onClick={() => dispatch(movieActions.setMode())}/>
+                            }
+                            label={!trigger ? 'dark' : 'light'}
+                        />
+                    </div>
+                    <Avatar alt="Travis Howard" src="" className={!trigger ? css.user : css.userDark}/>
                 </div>
-                <Avatar alt="Travis Howard" src="" className={!trigger ? css.user : css.userDark}/>
+
             </div>
             <div className={css.GenreList}>
                 {<GenreShow genres={genre}/>}
             </div>
         </div>
+
+
     );
 }
 

@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {IGenre, IMovie, IMoviesResponse, IMovieWithGenres} from "../../INterfaces";
+import {IGenre, IMovie, IMoviesResponse, IMovieWithGenres, ITrailerResponse} from "../../INterfaces";
 import {movieService} from "../../services";
 import {AxiosError} from "axios";
 
@@ -12,6 +12,7 @@ interface IState {
     byGenre: IMovie[]
     showGenre: boolean,
     query: string,
+    key: ITrailerResponse
 }
 
 const initialState: IState = {
@@ -22,6 +23,7 @@ const initialState: IState = {
     byGenre: [],
     showGenre: null,
     query: '',
+    key: {results: [{key: '', type: ''}], id: null}
 }
 
 const getAll = createAsyncThunk<IMoviesResponse, number>(
@@ -89,6 +91,19 @@ const searchCollection = createAsyncThunk<IMoviesResponse, { query: string; page
     }
 )
 
+const getTrailer = createAsyncThunk<ITrailerResponse, number>(
+    'movieSLice/getTrailer',
+    async (id, {rejectWithValue}) => {
+        try {
+            const {data} = await movieService.getVideo(id)
+            return data
+        } catch (e) {
+            const err = e as AxiosError;
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
+
 const movieSLice = createSlice({
     name: 'movieSlice',
     initialState,
@@ -123,6 +138,9 @@ const movieSLice = createSlice({
             .addCase(searchCollection.fulfilled, (state, action) => {
                 state.results = action.payload
             })
+            .addCase(getTrailer.fulfilled, (state, action) => {
+                state.key = action.payload
+            })
 })
 
 const {reducer: movieReducer, actions} = movieSLice
@@ -133,6 +151,7 @@ const movieActions = {
     getGenre,
     getByGenre,
     searchCollection,
+    getTrailer
 }
 
 export {
